@@ -16,11 +16,8 @@ import org.springframework.stereotype.Component;
 @Component
 @Slf4j
 public class LogHandler {
-    @Pointcut("execution(* com.tfb.*.controller.*.*(..))")
-    public void log() {
-    }
 
-    @Around("log()")
+    @Around("execution(* com.tfb.*.controller.*.*(..))")
     public Object showLog(ProceedingJoinPoint joinPoint) throws Throwable {
         long start = System.currentTimeMillis();
         String clazz = joinPoint.getTarget().getClass().getSimpleName();

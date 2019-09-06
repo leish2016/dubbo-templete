@@ -1,16 +1,18 @@
-package com.tfb.provider.entity;
+package com.tfb.api;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.Date;
 import javax.persistence.*;
 import lombok.Data;
 
 @Data
-public class Userinfo implements Serializable {
+public class User implements Serializable {
     /**
      * 编号
      */
     @Id
+    @GeneratedValue(generator = "JDBC")
     private Long id;
 
     /**
@@ -19,21 +21,26 @@ public class Userinfo implements Serializable {
     private String name;
 
     /**
-     * 手机号码
+     * 财富
      */
-    private String phone;
+    private BigDecimal money;
 
     /**
      * 创建时间
      */
-    @Column(name = "create_at")
-    private Date createAt;
+    @Column(name = "create_time")
+    private Date createTime;
 
     /**
      * 更新时间
      */
-    @Column(name = "update_at")
-    private Date updateAt;
+    @Column(name = "update_time")
+    private Date updateTime;
+
+    /**
+     * 描述
+     */
+    private String des;
 
     private static final long serialVersionUID = 1L;
 }

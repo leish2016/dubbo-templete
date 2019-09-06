@@ -1,11 +1,11 @@
 package com.tfb.consumer.controller;
 
 
-import com.alibaba.dubbo.config.annotation.Reference;
-import com.tfb.model.api.UserService;
-import com.tfb.model.entity.Userinfo;
+import com.tfb.api.User;
+import com.tfb.api.UserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.apache.dubbo.config.annotation.Reference;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,14 +23,14 @@ public class UserController {
 
     @PostMapping("/user")
     @ApiOperation("添加用户")
-    public Userinfo addUserInfo(Userinfo userinfo){
-        return userService.addUser(userinfo);
+    public User addUserInfo(User user){
+        return userService.addUser(user);
     }
 
 
     @GetMapping("/user")
     @ApiOperation("查询所有用户")
-    public List<Userinfo> findAllUserInfo() {
+    public List<User> findAllUserInfo() {
         return userService.getAll();
     }
 }

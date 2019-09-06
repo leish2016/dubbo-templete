@@ -3,13 +3,15 @@
 <generatorConfiguration >
   <!-- classPathEntry:数据库的JDBC驱动的jar包地址,已配置到Maven依赖 -->
   <context id="context1" >
-    <plugin type="org.mybatis.generator.plugins.SerializablePlugin" />
     <!--配置 mapper生成方式 -->
     <plugin type="tk.mybatis.mapper.generator.MapperPlugin">
       <property name="mappers" value="tk.mybatis.mapper.common.Mapper"/>
       <!--当配置 Data 后，Getter Setter ToString EqualsAndHashCode 会被忽略-->
       <property name="lombok" value="Data"/>
+      <!--<property name="swagger" value="true"/>-->
     </plugin>
+    <!--实现序列化接口-->
+    <plugin type="org.mybatis.generator.plugins.SerializablePlugin"/>
 
     <commentGenerator>
       <property name="suppressDate" value="true"/>
@@ -18,7 +20,7 @@
     </commentGenerator>
     <!--数据库连接的信息：驱动类、连接地址、用户名、密码 -->
     <!--<jdbcConnection driverClass="org.h2.Driver"	 connectionURL="jdbc:h2:tcp://localhost/~/test" userId="sa" password="" />-->
-    <jdbcConnection driverClass="com.mysql.jdbc.Driver"	 connectionURL="jdbc:mysql://192.168.0.114:3306/test001" userId="DBA_USER" password="dba123" />
+    <jdbcConnection driverClass="com.mysql.jdbc.Driver"	 connectionURL="jdbc:mysql://192.168.0.155:3306/test001" userId="DBA_USER" password="dba123" />
     <!-- 默认false，把JDBC DECIMAL 和 NUMERIC 类型解析为 Integer true，把JDBC DECIMAL 和
 			NUMERIC 类型解析为java.math.BigDecimal -->
     <javaTypeResolver>
@@ -31,11 +33,13 @@
 
 
     <!-- tableName:表名(%代表所有表),domainObjectName:对应于数据库表的javaBean类名 -->
-    <table schema="public" tableName="%"
+    <table schema="public" tableName="user"
       enableCountByExample="false"
       enableUpdateByExample="false"
       enableDeleteByExample="false"
       enableSelectByExample="false"
-      selectByExampleQueryId="false" />
+      selectByExampleQueryId="false" >
+      <generatedKey column="id" sqlStatement="JDBC"/>
+    </table>
   </context>
 </generatorConfiguration>

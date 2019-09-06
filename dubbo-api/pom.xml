@@ -8,7 +8,7 @@
         <version>1.0</version>
     </parent>
 
-    <artifactId>dubbo-model</artifactId>
+    <artifactId>dubbo-api</artifactId>
     <packaging>jar</packaging>
 
 

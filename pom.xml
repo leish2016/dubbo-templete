@@ -7,7 +7,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>1.5.19.RELEASE</version>
+        <version>2.1.7.RELEASE</version>
     </parent>
 
     <!-- avg及打包方式配置 -->
@@ -19,7 +19,7 @@
     <modules>
         <module>dubbo-provider</module>
         <module>dubbo-consumer</module>
-        <module>dubbo-model</module>
+        <module>dubbo-api</module>
     </modules>
 
     <!-- 远程仓库配置 -->
